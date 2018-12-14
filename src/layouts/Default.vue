@@ -1,8 +1,7 @@
 <template lang="pug">
-  el-container
+  el-container.default
     el-header
-      Aside
-    el-container
+    el-container.main
       router-view
 </template>
 
@@ -27,4 +26,10 @@ el-footer Footer`
 </script>
 
 <style lang="less">
+  .default{
+    height: 100%;
+    .main{
+      height: 100%;
+    }
+  }
 </style>
