@@ -13,10 +13,6 @@ export default {
   },
   data () {
     return {
-      height: '',
-      code: `el-container
-el-main Main
-el-footer Footer`
     }
   },
   mounted () {

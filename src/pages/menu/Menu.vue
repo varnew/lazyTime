@@ -1,17 +1,29 @@
 <template lang="pug">
+  DragDropBox(:list="list" @start="start" @end="end" @move="move")
 </template>
 
 <script>
-import draggable from 'vuedraggable'
+import DragDropBox from '../../components/Drag_drop_box'
+import labelData from '../../json/label.js'
 export default {
   components: {
-    draggable
+    DragDropBox
   },
   data () {
     return {
+      list: [
+      ]
     }
   },
+  mounted () {
+    this.list = this.sourceList = labelData
+  },
   methods: {
+    start (evt) {},
+    end (evt) {
+      this.list = this.sourceList
+    },
+    move (evt, originalEvent) {}
   }
 }
 </script>

@@ -16,13 +16,15 @@ import Menu from '../menu/Menu'
 import Container from '../container/Container'
 import Parameter from '../parameter/Parameter'
 import Move from '../../components/Move'
+import DragDropBox from '../../components/Drag_drop_box'
 export default {
   components: {
     draggable,
     Menu,
     Container,
     Parameter,
-    Move
+    Move,
+    DragDropBox
   },
   data () {
     return {
@@ -43,17 +45,14 @@ export default {
   .wrap{
     width: 100%;
     height: 100%;
-    background: red;
     display: flex;
     .left{
       width: 240px;
       height: 100%;
-      background: yellow;
     }
     .center{
       flex: 1;
       height: 100%;
-      background: antiquewhite;
     }
     .right{
       width: 300px;
