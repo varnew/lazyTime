@@ -92,7 +92,6 @@ export default {
   },
   data () {
     return {
-      list: [],
       editable: true, // 是否可拖拽
       isDragging: false,
       formObj: {
@@ -109,6 +108,14 @@ export default {
         group: 'name',
         disabled: !this.editable,
         ghostClass: 'ghost'
+      }
+    },
+    list: { // 生成数据
+      get () {
+        return this.$store.state.form.list
+      },
+      set (list) {
+        this.$store.commit('form/upListData', list)
       }
     }
   },
@@ -130,10 +137,15 @@ export default {
           ele = item
         }
       })
-      this.list.splice(index, 0, ele) // 插入
+      this.$store.commit('form/copyItem', { index: index, ele: ele })
     },
     handleDelete (index, element) {
-      this.list.splice(index, 1)
+      this.$store.commit('form/deleteItem', index)
+    },
+    click (el) {
+      console.log('----------')
+      console.log(el)
+      console.log('----------')
     }
   },
   watch: {
@@ -220,7 +232,6 @@ export default {
     .placeholder{
       width: 100%;
       height: 100px;
-      background: #f2f2f2;
     }
   }
 </style>

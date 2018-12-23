@@ -56,7 +56,6 @@ export default {
     }
     .right{
       width: 300px;
-      background: gray;
     }
   }
 </style>
