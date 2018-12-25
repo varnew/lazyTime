@@ -22,8 +22,10 @@ export default {
     start (evt) {},
     end (evt) {
       this.list = this.sourceList
+      this.$store.commit('form/setActive', { type: 'end', evt: evt })
     },
-    move (evt, originalEvent) {}
+    move (evt, originalEvent) {
+    }
   }
 }
 </script>

@@ -1,5 +1,6 @@
 const state = {
-  list: []
+  list: [], // 操作数据
+  active: {} // 当前需要设置参数的项
 }
 
 // getters
@@ -17,9 +18,6 @@ const actions = {
 // mutations
 const mutations = {
   copyItem (state, { index, ele }) { // 复制
-    console.log('----------d')
-    console.log(ele)
-    console.log('----------d')
     state.list.splice(index, 0, ele)
   },
   deleteItem (state, index) { // 删除
@@ -27,6 +25,16 @@ const mutations = {
   },
   upListData (state, list) { // 更新属性
     state.list = list
+  },
+  setActive (state, data) {
+    if (data.type === 'end') {
+      state.active = state.list[data.evt.newIndex]
+      state.list[data.evt.newIndex].id = new Date().getTime().toString()
+    } else if (data.type === 'click') {
+      state.active = data.element
+    } else if (data.type === 'edit') {
+      //
+    }
   }
 }
 

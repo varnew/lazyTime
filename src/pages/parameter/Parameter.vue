@@ -5,11 +5,11 @@
       div.menu-item 布局
     div.container
       div.parameter
-        div.parameter-item(v-for="(item, index) in params" v-if="params.length")
-          el-tooltip(effect="dark" :content="item.desc" placement="top")
-            div.parameter-item-left {{item.key}}
+        div.parameter-item(v-for="(item, key, index) in list[activeIndex]" v-if="list[activeIndex]")
+          el-tooltip(effect="dark" :content="list[activeIndex]['desc']" placement="top")
+            div.parameter-item-left {{key}}
           div.parameter-item-right
-            el-input(v-model="item.value" type="text" size="mini")
+            el-input(v-model="list[activeIndex][key]" type="text" size="mini")
       div.layout
     div.footer
 </template>
@@ -29,39 +29,63 @@ export default {
   },
   data () {
     return {
-      params: []
+      params: [],
+      activeIndex: null
+    }
+  },
+  computed: {
+    list: { // 操作数据
+      get () {
+        return this.$store.state.form.list
+      },
+      set (list) {
+        this.$store.commit('form/upListData', list)
+      }
+    },
+    active: {
+      get () {
+        return this.$store.state.form.active
+      },
+      set (active) {
+        const data = {
+          type: 'edit',
+          active: active
+        }
+        this.$store.commit('form/setActive', data)
+      }
     }
   },
   mounted () {
-    const params = {
-      labelName: 'input 单行文本', // 标签名字
-      nikeName: '单行文本', // label名字
-      labelKey: 'input',
-      type: 'text',
-      value: new Date().getTime().toString(),
-      placeholder: '',
-      disabled: '',
-      readonly: '',
-      max: '',
-      min: '',
-      autofocus: '',
-      size: 'mini'
-    }
-    Object.keys(params).forEach((key, index) => {
-      const item = {
-        key: key,
-        value: params[key],
-        desc: params[key]
-      }
-      this.params.push(item)
-    })
-    // label.map((item) => {
-    //   if (this.type === item.labelKey) {
-    //     this.params = item
-    //   }
-    // })
   },
   methods: {
+    init () {
+      if (this.active) {
+        this.params = []
+        let activeItem = null
+        this.list.map((item, index) => {
+          if (item.id === this.active.id) {
+            activeItem = item
+            this.activeIndex = index
+          }
+        })
+        Object.keys(activeItem).forEach((key, index) => {
+          const item = {
+            key: key,
+            value: activeItem[key],
+            desc: activeItem[key]
+          }
+          this.params.push(item)
+        })
+      }
+    }
+  },
+  watch: {
+    'active': {
+      handler: function (val, oldVal) {
+        this.init()
+      },
+      deep: true
+    }
   }
 }
 </script>

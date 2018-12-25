@@ -90,6 +90,7 @@ export default {
     padding:0px 0px 66px 0px;
   }
   .list-group-item {
+    box-sizing: border-box;
     width: 100%;
     height: 30px;
     line-height: 30px;

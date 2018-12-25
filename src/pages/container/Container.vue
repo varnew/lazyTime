@@ -1,11 +1,11 @@
 <template lang="pug">
   div.wrap
     draggable.list-group(element="div" v-model="list" :options="dragOptions" :move="onMove" @start="isDragging=true" @end="isDragging=false")
-      transition-group(type="transition" :name="'flip-list'")
+      <!--transition-group(type="transition" :name="'flip-list'")-->
         div.list-group-item(:key="new Date().getTime().toString()")
           el-form(ref="form" :model="formObj.form" :inline="formObj.inline" label-width="110px" :label-position="formObj.labelPosition")
             draggable.list-group(element="div" v-model="list" :options="dragOptions" :move="onMove" @start="isDragging=true" @end="isDragging=false")
-              div.item(v-for="(element, index) in list" :key="index")
+              div.item(v-for="(element, index) in list" :key="index" @click="setParameter(element, index)" :class="{ 'active': element === active }")
                 // input
                 div.action-box(v-if="element.labelKey === 'input'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
@@ -36,7 +36,7 @@
                   div.delete(@click.stop="handleDelete(index, element)") 删除
                   el-form-item(:label="element.nikeName")
                     el-select(v-model="element.value" :size="element.size")
-                      el-option(v-for="(item, index) in element.options" :key="index" :label="item.element" :value="item.value" :size="element.size")
+                      el-option(v-for="(item, index) in element.options" :key="index" :label="item.name" :value="item.value" :size="element.size")
                 // switch
                 div.action-box(v-if="element.labelKey === 'switch'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
@@ -117,6 +117,14 @@ export default {
       set (list) {
         this.$store.commit('form/upListData', list)
       }
+    },
+    active: {
+      get () {
+        return this.$store.state.form.active
+      },
+      set (list) {
+        this.$store.commit('form/active', list)
+      }
     }
   },
   methods: {
@@ -142,10 +150,8 @@ export default {
     handleDelete (index, element) {
       this.$store.commit('form/deleteItem', index)
     },
-    click (el) {
-      console.log('----------')
-      console.log(el)
-      console.log('----------')
+    setParameter (element, index) {
+      this.$store.commit('form/setActive', { type: 'click', element: element, index: index })
     }
   },
   watch: {
@@ -181,15 +187,18 @@ export default {
         margin-top: 4px;
       }
       .item{
+        box-sizing: border-box;
         min-height: 30px;
         background: #fff;
+        &.active{
+          background: #e68c3c63;
+        }
         &:hover{
           border: 1px dashed #66b1ff;
           color: #66b1ff;
         }
         :hover.action-box{
           position: relative;
-          border: 1px solid #f56c6c;
           .copy{
             display: block;
           }
