@@ -17,19 +17,26 @@ const actions = {
 
 // mutations
 const mutations = {
-  copyItem (state, { index, ele }) { // 复制
-    state.list.splice(index, 0, ele)
+  addItem (state, { element }) { // 添加
+    console.log(element)
+    const ele = JSON.parse(JSON.stringify(element))
+    ele.id = new Date().getTime()
+    state.list.push(ele)
   },
   deleteItem (state, index) { // 删除
     state.list.splice(index, 1)
   },
-  upListData (state, list) { // 更新属性
+  upListData (state, list) { // 实现可拖拽排序
+    list.map((item, index) => {
+      if (!item.id) {
+        list.splice(index, 1)
+      }
+    })
     state.list = list
   },
   setActive (state, data) {
     if (data.type === 'end') {
       state.active = state.list[data.evt.newIndex]
-      state.list[data.evt.newIndex].id = new Date().getTime().toString()
     } else if (data.type === 'click') {
       state.active = data.element
     } else if (data.type === 'edit') {

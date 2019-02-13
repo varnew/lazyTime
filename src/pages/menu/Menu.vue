@@ -16,15 +16,21 @@ export default {
     }
   },
   mounted () {
-    this.list = this.sourceList = labelData
+    this.list = labelData
   },
   methods: {
-    start (evt) {},
+    start (evt) {
+    },
     end (evt) {
-      this.list = this.sourceList
+      this.$store.commit('form/addItem', { element: this.list[evt.oldIndex] })
       this.$store.commit('form/setActive', { type: 'end', evt: evt })
     },
     move (evt, originalEvent) {
+    }
+  },
+  watch: {
+    list: function (newValue, oldValue) {
+      this.list = labelData
     }
   }
 }

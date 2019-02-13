@@ -1,11 +1,10 @@
-<template lang="pug">
+<template>
+  <div></div>
 </template>
 
 <script>
-import draggable from 'vuedraggable'
 export default {
   components: {
-    draggable
   },
   data () {
     return {
@@ -15,6 +14,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-</style>

@@ -7,83 +7,83 @@
             draggable.list-group(element="div" v-model="list" :options="dragOptions" :move="onMove" @start="isDragging=true" @end="isDragging=false")
               div.item(v-for="(element, index) in list" :key="index" @click="setParameter(element, index)" :class="{ 'active': element === active }")
                 // input
-                div.action-box(v-if="element.labelKey === 'input'")
+                div.action-box(v-if="element.labelKey.name === 'input'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-form-item(:label="element.nikeName")
-                    el-input(v-model="element.value" :type="element.type" :size="element.size" :placeholder="element.placeholder")
+                  el-form-item(:label="element.nikeName.name")
+                    el-input(v-model="element.value.name" :type="element.type.name" :size="element.size.name" :placeholder="element.placeholder.name")
                 // radio
-                div.action-box(v-if="element.labelKey === 'radio'")
+                div.action-box(v-if="element.labelKey.name === 'radio'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-form-item(:label="element.nikeName")
-                    el-radio(v-model="element.value" :type="element.type" :label="element.label")
+                  el-form-item(:label="element.nikeName.name")
+                    el-radio(v-model="element.value.name" :label="element.label.name")
                 // checkbox
-                div.action-box(v-if="element.labelKey === 'checkbox'")
+                div.action-box(v-if="element.labelKey.name === 'checkbox'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-form-item(:label="element.nikeName")
-                    el-checkbox(v-model="element.value" :label="element.label" :size="element.size") {{element.label}}
+                  el-form-item(:label="element.nikeName.name")
+                    el-checkbox(v-model="element.value.name" :label="element.label.name" :size="element.size.name") {{element.label.name}}
                 // inputNumber
-                div.action-box(v-if="element.labelKey === 'inputNumber'")
+                div.action-box(v-if="element.labelKey.name === 'inputNumber'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-form-item(:label="element.nikeName")
-                    el-input-number(v-model="element.value" :label="element.label" :size="element.size") {{element.label}}
+                  el-form-item(:label="element.nikeName.name")
+                    el-input-number(v-model="element.value.name" :label="element.label.name" :size="element.size.name") {{element.label.name}}
                 // select
-                div.action-box(v-if="element.labelKey === 'select'")
+                div.action-box(v-if="element.labelKey.name === 'select'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-form-item(:label="element.nikeName")
-                    el-select(v-model="element.value" :size="element.size")
-                      el-option(v-for="(item, index) in element.options" :key="index" :label="item.name" :value="item.value" :size="element.size")
+                  el-form-item(:label="element.nikeName.name")
+                    el-select(v-model="element.value.name" :size="element.size.name")
+                      el-option(v-for="(item, index) in element.options" :key="index" :label="item.name" :value="item.value" :size="element.size.name")
                 // switch
-                div.action-box(v-if="element.labelKey === 'switch'")
+                div.action-box(v-if="element.labelKey.name === 'switch'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-form-item(:label="element.nikeName")
-                    el-switch(v-model="element.value")
+                  el-form-item(:label="element.nikeName.name")
+                    el-switch(v-model="element.value.name")
                 // slide
-                div.action-box(v-if="element.labelKey === 'slide'")
+                div.action-box(v-if="element.labelKey.name === 'slide'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-slider(v-model="element.value")
+                  el-slider(v-model="element.value.name")
                 // timePicker
-                div.action-box(v-if="element.labelKey === 'timePicker'")
+                div.action-box(v-if="element.labelKey.name === 'timePicker'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-form-item(:label="element.nikeName")
-                    el-time-select(v-model="element.value" :picker-options="element['picker-options']" :size="element.size" :placeholder="element.placeholder")
+                  el-form-item(:label="element.nikeName.name")
+                    el-time-select(v-model="element.value.name" :picker-options="element['picker-options']" :size="element.size.name" :placeholder="element.placeholder.name")
                 // datePicker
-                div.action-box(v-if="element.labelKey === 'datePicker'")
+                div.action-box(v-if="element.labelKey.name === 'datePicker'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-form-item(:label="element.nikeName")
-                    el-date-picker(v-model="element.value" :picker-options="element['picker-options']" :size="element.size" :placeholder="element.placeholder")
+                  el-form-item(:label="element.nikeName.name")
+                    el-date-picker(v-model="element.value.name" :picker-options="element['picker-options']" :size="element.size.name" :placeholder="element.placeholder.name")
                 // datePicker
-                div.action-box(v-if="element.labelKey === 'dateTimePicker'")
+                div.action-box(v-if="element.labelKey.name === 'dateTimePicker'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-form-item(:label="element.nikeName")
-                    el-date-picker(v-model="element.value" :type="element.type" :size="element.size" :placeholder="element.placeholder")
+                  el-form-item(:label="element.nikeName.name")
+                    el-date-picker(v-model="element.value.name" :type="element.type.name" :size="element.size.name" :placeholder="element.placeholder.name")
                 // upload
-                div.action-box(v-if="element.labelKey === 'upload'")
+                div.action-box(v-if="element.labelKey.name === 'upload'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-form-item(:label="element.nikeName")
-                    el-upload(:file-list="element.value" @on-success="" @on-error="" @before-upload="" :action="element.action" :limit="element.limit"  multiple list-type="picture-card")
+                  el-form-item(:label="element.nikeName.name")
+                    el-upload(:file-list="element.value.name" @on-success="" @on-error="" @before-upload="" :action="element.action.name" :limit="element.limit.name"  multiple list-type="picture-card")
                       i(class="el-icon-plus")
                 // rate
-                div.action-box(v-if="element.labelKey === 'rate'")
+                div.action-box(v-if="element.labelKey.name === 'rate'")
                   div.copy(@click.stop="handleCopy(index, element)") 复制
                   div.delete(@click.stop="handleDelete(index, element)") 删除
-                  el-form-item(:label="element.nikeName")
-                    el-rate(v-model="element.value" disabled show-score :text-color="element['text-color']" score-template="{value}")
+                  el-form-item(:label="element.nikeName.name")
+                    el-rate(v-model="element.value.name" disabled show-score :text-color="element['text-color'].name" score-template="{value}")
 </template>
 
 <script>
 import draggable from 'vuedraggable'
-import labelList from '../../json/label.js'
+// import labelList from '../../json/label.js'
 export default {
   components: {
     draggable
@@ -138,14 +138,7 @@ export default {
       )
     },
     handleCopy (index, element) {
-      const labelKey = element.labelKey
-      let ele = null
-      labelList.map((item) => {
-        if (labelKey === item.labelKey) {
-          ele = item
-        }
-      })
-      this.$store.commit('form/copyItem', { index: index, ele: ele })
+      this.$store.commit('form/addItem', { element: element })
     },
     handleDelete (index, element) {
       this.$store.commit('form/deleteItem', index)
