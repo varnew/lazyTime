@@ -79,12 +79,18 @@
                   div.delete(@click.stop="handleDelete(index, element)") 删除
                   el-form-item(:label="element.nikeName.name")
                     el-rate(v-model="element.value.name" disabled show-score :text-color="element['text-color'].name" score-template="{value}")
+                // layout
+                div.action-box(v-if="element.labelKey.name === 'secondLayout'")
+                  div.copy(@click.stop="handleCopy(index, element)") 复制
+                  div.delete(@click.stop="handleDelete(index, element)") 删除
+                  div(style="background: red")
 </template>
 
 <script>
 import draggable from 'vuedraggable'
 // import labelList from '../../json/label.js'
 export default {
+  name: 'container',
   components: {
     draggable
   },
