@@ -12,10 +12,20 @@ const layoutData = [
       isEdit: true
     },
     labelKey: {
-      name: 'secondLayout',
+      name: 'grid',
       type: 'string',
       isEdit: true
-    }
+    },
+    columns: [
+      {
+        span: 12,
+        list: []
+      },
+      {
+        span: 12,
+        list: []
+      }
+    ]
   }
 ]
 export default layoutData
