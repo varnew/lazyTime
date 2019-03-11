@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div(@click="setParameter")
     // input
     div.action-box(v-if="element.labelKey.name === 'input'")
       div.copy(@click.stop="handleCopy(index, element)") 复制
@@ -95,6 +95,9 @@ export default {
   mounted () {
   },
   methods: {
+    setParameter () {
+      this.$store.commit('form/setActive', { type: 'click', element: this.element })
+    },
     handleCopy (index, element) {
       this.$store.commit('form/addItem', { element: element })
     },

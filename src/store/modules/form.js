@@ -18,7 +18,6 @@ const actions = {
 // mutations
 const mutations = {
   addItem (state, { element }) { // 添加
-    console.log(element)
     const ele = JSON.parse(JSON.stringify(element))
     ele.id = new Date().getTime()
     state.list.push(ele)

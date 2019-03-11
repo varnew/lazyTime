@@ -19,17 +19,23 @@ const labelData = [
     type: {
       name: 'text',
       type: 'string',
-      isEdit: false
+      isEdit: false,
+      isOption: true,
+      value: ''
     },
     value: {
       name: new Date().getTime().toString(),
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true,
+      value: ''
     },
     placeholder: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true,
+      value: ''
     },
     disabled: {
       name: '',
@@ -39,7 +45,9 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true,
+      value: ''
     },
     readonly: {
       name: '',
@@ -48,17 +56,23 @@ const labelData = [
         { label: 'readonly:true', value: true },
         { label: 'readonly:false', value: false }
       ],
-      isEdit: true
+      isEdit: true,
+      isOption: true,
+      value: ''
     },
     max: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true,
+      value: ''
     },
     min: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true,
+      value: ''
     },
     autofocus: {
       name: '',
@@ -67,7 +81,9 @@ const labelData = [
         { label: 'autofocus:true', value: true },
         { label: 'autofocus:false', value: false }
       ],
-      isEdit: true
+      isEdit: true,
+      isOption: true,
+      value: ''
     },
     size: {
       name: 'mini',
@@ -78,7 +94,9 @@ const labelData = [
         { label: 'medium', name: 'medium' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true,
+      value: ''
     }
   },
   {
@@ -1151,23 +1169,6 @@ const labelData = [
     },
     'text-color': {
       name: '', // '#ff9900'
-      type: 'string',
-      isEdit: true
-    }
-  },
-  {
-    labelName: {
-      name: '两栏布局',
-      type: 'string',
-      isEdit: true
-    },
-    nikeName: {
-      name: '两栏布局', // label名字
-      type: 'string',
-      isEdit: true
-    },
-    labelKey: {
-      name: 'secondLayout',
       type: 'string',
       isEdit: true
     }

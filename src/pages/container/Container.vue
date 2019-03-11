@@ -1,21 +1,23 @@
 <template lang="pug">
   div.wrap
-    draggable.list-group(element="div" v-model="list" :options="dragOptions" :move="onMove" @start="isDragging=true" @end="isDragging=false")
+    draggable.list-group(element="div" v-model="list" :options="dragOptions")
         div.list-group-item(:key="new Date().getTime().toString()")
           el-form(ref="form" :model="formObj.form" :inline="formObj.inline" label-width="110px" :label-position="formObj.labelPosition")
-            draggable.list-group(element="div" v-model="list" :options="dragOptions" :move="onMove" @start="isDragging=true" @end="isDragging=false")
+            draggable.list-group(element="div" v-model="list" :options="dragOptions")
               div.item(v-for="(element, index) in list" :key="index" @click="setParameter(element, index)" :class="{ 'active': element === active }")
                 template(v-if="element.labelKey.name !== 'grid'")
-                  render-item(:element="element" :index=index @click="setParameter(element, index)" :class="{ 'active': element === active }")
+                  render-item(:element="element" :index=index :class="{ 'active': element === active }")
                 // layout
                 template(v-if="element.labelKey.name === 'grid'")
                   el-row(type="flex")
                     el-col(:span="12" style="border: 1px dashed rgb(153, 153, 153);")
-                      draggable.list-group(element="div" v-model="element.columns[0].list" :options="dragOptions" :move="onMove" @start="isDragging=true" @end="isDragging=false")
+                      draggable.list-group(element="div" v-model="element.columns[0].list" :options="dragOptions")
                         template(v-for="(ele, index) in element.columns[0].list")
-                          render-item(:element="ele" :index=index @click="setParameter(ele, index)" :class="{ 'active': ele === active }")
+                          render-item(:element="ele" :index=index :class="{ 'active': ele === active }")
                     el-col(:span="12" style="border: 1px dashed rgb(153, 153, 153);")
-                      draggable.list-group(element="div" v-model="element.list" :options="dragOptions" :move="onMove" @start="isDragging=true" @end="isDragging=false")
+                      draggable.list-group(element="div" v-model="element.columns[1].list" :options="dragOptions")
+                        template(v-for="(ele, index) in element.columns[1].list")
+                          render-item(:element="ele" :index=index :class="{ 'active': ele === active }")
                 <!--template(v-if="element.labelKey.name === 'grid'")-->
                   <!--div.action-box(v-if="element.labelKey.name === 'secondLayout'")-->
                     <!--div.copy(@click.stop="handleCopy(index, element)") 复制-->
@@ -89,6 +91,7 @@ export default {
       this.$store.commit('form/deleteItem', index)
     },
     setParameter (element, index) {
+      if (element.labelKey.name === 'grid') { return }
       this.$store.commit('form/setActive', { type: 'click', element: element, index: index })
     }
   },

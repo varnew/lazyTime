@@ -62,6 +62,11 @@ export default {
       return (
         (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
       )
+    },
+    add (evt) {
+      console.log('----------dd')
+      console.log(event)
+      console.log('----------dd')
     }
   },
   beforeDestroy () {
