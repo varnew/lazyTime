@@ -24,6 +24,10 @@ module.exports = {
   entry: {
     app: './src/main.js'
   },
+  externals: {
+    'element-ui': 'element-ui',
+    'v-charts': 'v-charts'
+  },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
