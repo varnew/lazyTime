@@ -1,6 +1,6 @@
 <template lang="pug">
   div.error-list
-    el-table(ref="table" :data="tableList" tooltip-effect="dark" @selection-change="handleSelectionChange")
+    el-table(ref="table" :data="tableList" tooltip-effect="dark" @selection-change="handleSelectionChange" @row-click="rowClick")
       el-table-column(type="selection" width="55")
       el-table-column(label="名称"     prop="name" width="")
       el-table-column(label="错误类型" prop="type" width="120")
@@ -53,6 +53,9 @@ export default {
     },
     handleSelectionChange (list) {
       this.selectedList = list
+    },
+    rowClick (row, column, event) {
+      this.$router.push({ name: 'errorDetail', params: {}, query: {id: row.id, typeId: row.typeId} })
     }
   }
 }

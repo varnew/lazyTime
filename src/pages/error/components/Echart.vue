@@ -1,6 +1,6 @@
 <template lang="pug">
-  ve-histogram(:data="chartData" :extend="extend" :settings="chartSettings" :data-zoom="dataZoom")
-
+  div
+    ve-histogram(:data="chartData" :extend="extend" :settings="chartSettings" :data-zoom="dataZoom")
 </template>
 
 <script>

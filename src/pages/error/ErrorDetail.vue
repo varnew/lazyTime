@@ -1,33 +1,39 @@
 <template lang="pug">
-  article.wrap
-    div.header
-      el-radio-group(v-model="tabObj.active" size="small")
-        el-radio-button(v-for="(item) in tabObj.data" :key="item.value" :label="item.value") {{item.label}}
-    div.list
-      <!--img(src="https://bpic.588ku.com/element_banner/20/19/01/841ae0deb44f1ff8c552035abb2bb0acd.jpg")-->
-    // 基本信息
-    div.base-info(v-if="tabObj.active === 'baseInfo'")
-      section.error-info(v-if="errorDetail")
-        base-info(:errorDetail="errorDetail")
-        source-info(:errorDetail="errorDetail")
-        stack-info(:errorDetail="errorDetail")
-        error-info(:errorDetail="errorDetail")
-      section.device-info(v-if="userAgent")
-        device-info(:userAgent="userAgent")
-        position-info(:errorDetail="errorDetail")
-        order-info(:errorDetail="errorDetail")
-    // 用户行为
-    div.user-action(v-if="tabObj.active === 'userAction' && errorDetail")
-      section.action-item(v-for="(item) in errorDetail.breadcrumbs")
-        user-action(:item="item")
-    // 页面性能
-    div.performance-info(v-if="tabObj.active === 'performance' && errorDetail")
-      performance(:errorDetail="errorDetail")
-    // 携带参数
-    div.performance-info(v-if="tabObj.active === 'metaData' && errorDetail")
-      metadata(:errorDetail="errorDetail")
+  div.box(:class="{ 'hide': !chartStatus, 'show': chartStatus }")
+    div.btn(@click="showChart") {{chartStatus ? '收起':'展开'}}
+    article.wrap
+      div.header
+        el-radio-group(v-model="tabObj.active" size="small")
+          el-radio-button(v-for="(item) in tabObj.data" :key="item.value" :label="item.value") {{item.label}}
+      div.list
+        div.list-item(:class="{ 'active': item.id == $route.query.id }" v-for="(item, index) in errorList" :key="index")
+          div.name {{item.name}}
+          div.time {{formatTime(item.time)}}
+          div.type {{item.type}}
+      // 基本信息
+      div.base-info(v-if="tabObj.active === 'baseInfo'")
+        section.error-info(v-if="errorDetail")
+          base-info(:errorDetail="errorDetail")
+          source-info(:errorDetail="errorDetail")
+          stack-info(:errorDetail="errorDetail")
+          error-info(:errorDetail="errorDetail")
+        section.device-info(v-if="userAgent")
+          device-info(:userAgent="userAgent")
+          position-info(:errorDetail="errorDetail")
+          order-info(:errorDetail="errorDetail")
+      // 用户行为
+      div.user-action(v-if="tabObj.active === 'userAction' && errorDetail")
+        section.action-item(v-for="(item) in errorDetail.breadcrumbs")
+          user-action(:item="item")
+      // 页面性能
+      div.performance-info(v-if="tabObj.active === 'performance' && errorDetail")
+        performance(:errorDetail="errorDetail")
+      // 携带参数
+      div.performance-info(v-if="tabObj.active === 'metaData' && errorDetail")
+        metadata(:errorDetail="errorDetail")
 </template>
 <script>
+import moment from 'moment'
 import errorAPI from '@/api/error.js'
 import baseInfo from './components/Base_info'
 import sourceInfo from './components/source_info'
@@ -55,6 +61,7 @@ export default {
   },
   data: () => {
     return {
+      chartStatus: false,
       errorDetail: null,
       userAgent: null,
       tabObj: {
@@ -65,11 +72,13 @@ export default {
           { label: '页面性能', value: 'performance' },
           { label: '携带参数', value: 'metaData' }
         ]
-      }
+      },
+      errorList: []
     }
   },
   mounted () {
     this.init(this.$route.query.id)
+    this.fetchList(this.$route.query.typeId)
   },
   methods: {
     init (id) {
@@ -89,15 +98,56 @@ export default {
           console.log(res)
         })
     },
+    fetchList (typeId) { // 根据tupeId获取列表
+      const params = {
+        typeId: typeId
+      }
+      errorAPI.getErrorByTypeId(params)
+        .then((res) => {
+          if (res.data.code === 200) {
+            this.errorList = res.data.data
+          } else {
+            this.$message.error(res.data.message)
+          }
+        })
+        .catch((res) => {
+          console.log(res)
+        })
+    },
     detect (userAgent) {
       // this.userAgent = detect.parse(userAgent)
       this.userAgent = detect.parse('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36')
       console.log(this.userAgent)
+    },
+    showChart () {
+      this.chartStatus = !this.chartStatus
+    },
+    formatTime (time) {
+      return time && moment(new Date(parseFloat(time))).format('YYYY-MM-DD HH:mm:ss')
     }
   }
 }
 </script>
 <style lang="less" scoped>
+  .box{
+    background: #fff;
+  }
+  .hide{
+    transition: transform 0.3s ease-in;
+    transform: translateY(-342px);
+  }
+  .show{
+    transition: transform 0.3s ease-in;
+    transform: translateY(0px);
+  }
+  .btn{
+    height: 30px;
+    line-height: 31px;
+    text-align: center;
+    background: #f2f2f2;
+    color: gray;
+    cursor: pointer;
+  }
   .wrap{
     width: 100%;
     height: 100%;
@@ -107,7 +157,6 @@ export default {
     flex-direction: row;
     position: relative;
     word-break: break-all;
-    color: #f56c6c;
     .header{
       width: 100%;
       height: 36px;
@@ -124,6 +173,28 @@ export default {
     .list{
       width: 300px;
       height:100%;
+      .list-item{
+        font-size: 12px;
+        height: 12px;
+        line-height: 12px;
+        padding: 10px 8px;
+        .name{
+          float: left;
+        }
+        .time{
+          float: right;
+        }
+        .type{
+          text-align: center;
+        }
+        &.active{
+          background: #f2f2f2;
+        }
+        &:hover{
+          background: #f2f2f2;
+          cursor: pointer;
+        }
+      }
     }
     .base-info {
       height: 100%;

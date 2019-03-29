@@ -1,8 +1,8 @@
 <template lang="pug">
   div(class="wrap")
-    div.echart-box
-      echart
-    div.contain-box
+    div.echart-box(:class="{'hide': status}")
+      echart(@chartStatus="chartStatus")
+    div.contain-box(:class="{ 'hide': status }")
       router-view
 </template>
 
@@ -16,11 +16,15 @@ export default {
   },
   data () {
     return {
+      status: true
     }
   },
   mounted () {
   },
   methods: {
+    chartStatus (status) {
+      this.chartStatus = status
+    }
   }
 }
 </script>
@@ -38,6 +42,9 @@ export default {
     }
     .contain-box{
       flex: 1;
+      &.hide{
+        transform: rotateY(100);
+      }
     }
   }
 </style>

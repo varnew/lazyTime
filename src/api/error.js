@@ -9,8 +9,13 @@ const getErrors = function getErrors (params) {
   return get(`${baseUrl}/getErrors`, params)
 }
 
+const getErrorByTypeId = function getErrors (params) {
+  return get(`${baseUrl}/getErrorByTypeId`, params)
+}
+
 const errorAPI = {
   getErrorById,
-  getErrors
+  getErrors,
+  getErrorByTypeId
 }
 export default errorAPI
