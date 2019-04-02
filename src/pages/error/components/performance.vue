@@ -20,10 +20,11 @@ export default {
 </script>
 <style lang="less" scoped>
   .pre{
-    font-size: .85em;
-    line-height: 1.2em;
+    font-size: 13px;
+    line-height: 24px;
     overflow: auto;
-    height: 200px;
+    height: 100%;
+    min-height: 500px;
     resize: vertical;
     cursor: pointer;
     .code{

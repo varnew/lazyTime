@@ -6,12 +6,12 @@
         el-radio-group(v-model="tabObj.active" size="small")
           el-radio-button(v-for="(item) in tabObj.data" :key="item.value" :label="item.value") {{item.label}}
       div.list
-        div.list-item(:class="{ 'active': item.id == $route.query.id }" v-for="(item, index) in errorList" :key="index")
+        div.list-item(:class="{ 'active': item.id === activeErrorId }" v-for="(item, index) in errorList" :key="index" @click="init(item.id)")
           div.name {{item.name}}
           div.time {{formatTime(item.time)}}
           div.type {{item.type}}
       // 基本信息
-      div.base-info(v-if="tabObj.active === 'baseInfo'")
+      div.base-info(v-if="tabObj.active === 'baseInfo'" v-loading="loading.list")
         section.error-info(v-if="errorDetail")
           base-info(:errorDetail="errorDetail")
           source-info(:errorDetail="errorDetail")
@@ -22,14 +22,14 @@
           position-info(:errorDetail="errorDetail")
           order-info(:errorDetail="errorDetail")
       // 用户行为
-      div.user-action(v-if="tabObj.active === 'userAction' && errorDetail")
+      div.user-action(v-if="tabObj.active === 'userAction' && errorDetail" v-loading="loading.list")
         section.action-item(v-for="(item) in errorDetail.breadcrumbs")
           user-action(:item="item")
       // 页面性能
-      div.performance-info(v-if="tabObj.active === 'performance' && errorDetail")
+      div.performance-info(v-if="tabObj.active === 'performance' && errorDetail" v-loading="loading.list")
         performance(:errorDetail="errorDetail")
       // 携带参数
-      div.performance-info(v-if="tabObj.active === 'metaData' && errorDetail")
+      div.performance-info(v-if="tabObj.active === 'metaData' && errorDetail" v-loading="loading.list")
         metadata(:errorDetail="errorDetail")
 </template>
 <script>
@@ -64,6 +64,9 @@ export default {
       chartStatus: false,
       errorDetail: null,
       userAgent: null,
+      loading: {
+        list: false
+      },
       tabObj: {
         active: 'baseInfo',
         data: [
@@ -73,7 +76,8 @@ export default {
           { label: '携带参数', value: 'metaData' }
         ]
       },
-      errorList: []
+      errorList: [],
+      activeErrorId: ''
     }
   },
   mounted () {
@@ -85,6 +89,8 @@ export default {
       const params = {
         id: id
       }
+      this.activeErrorId = id
+      this.loading.list = true
       errorAPI.getErrorById(params)
         .then((res) => {
           if (res.data.code === 200) {
@@ -96,6 +102,9 @@ export default {
         })
         .catch((res) => {
           console.log(res)
+        })
+        .finally(() => {
+          this.loading.list = false
         })
     },
     fetchList (typeId) { // 根据tupeId获取列表
@@ -130,6 +139,7 @@ export default {
 </script>
 <style lang="less" scoped>
   .box{
+    height: 100%;
     background: #fff;
   }
   .hide{
@@ -151,6 +161,7 @@ export default {
   .wrap{
     width: 100%;
     height: 100%;
+    min-height: 700px;
     padding-top: 36px;
     margin: 0px;
     display: flex;
@@ -234,6 +245,7 @@ export default {
       }
     }
     .performance-info{
+      flex: 1;
       width: 100%;
       height: 100%;
       background: #fcf6db;
