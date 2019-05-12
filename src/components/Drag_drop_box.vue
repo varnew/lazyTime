@@ -1,7 +1,7 @@
 <template lang="pug">
   div.wrap
     draggable.list-group(element="div" v-model="sourceList" :options="dragOptions" :move="onMove" @start="onStart" @end="onEnd")
-      transition-group(type="transition" :name="'flip-list'")
+      <!--transition-group(type="transition" :name="'flip-list'")-->
         div.list-group-item(v-for="(element, index) in sourceList" :key="index") {{element.labelName.name}}
 </template>
 

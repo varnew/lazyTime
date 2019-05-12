@@ -96,6 +96,7 @@ export default {
           if (res.data.code === 200) {
             this.errorDetail = res.data.data
             this.detect(this.errorDetail.userAgent)
+            window.fundebug.notify('Test', 'Hello, Fundebug!')
           } else {
             this.$message.error(res.data.message)
           }

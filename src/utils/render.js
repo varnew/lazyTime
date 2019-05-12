@@ -7,8 +7,13 @@ const render = (list) => {
         options += `${key}="${element[key].name || element[key].optionSeleted}" `
       }
     })
-    temp = `el-form-item(:label="${element.nikeName.name}")
-        el-input(${options})`
+    console.log('----------')
+    console.log(options)
+    console.log('----------')
+    const ele = `el-form-item(:label="${element.nikeName.name}")` + `
+` + `  el-input(${options})`
+    temp = temp + ele + `
+`
   })
   return temp
 }

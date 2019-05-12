@@ -23,12 +23,13 @@
                     <!--div.copy(@click.stop="handleCopy(index, element)") 复制-->
                     <!--div.delete(@click.stop="handleDelete(index, element)") 删除-->
                     <!--div(style="background: red")-->
+    el-button(@click="renderElement") 生成
 </template>
 
 <script>
 import draggable from 'vuedraggable'
 import RenderItem from '../../components/Render_item'
-// import labelList from '../../json/label.js'
+import render from '../../utils/render'
 export default {
   name: 'container',
   components: {
@@ -74,6 +75,8 @@ export default {
       }
     }
   },
+  mounted () {
+  },
   methods: {
     onMove ({ relatedContext, draggedContext }) {
       // relatedContext:获取移动对象在活动数组中的下标;被移动元素;被移动数组;
@@ -93,6 +96,9 @@ export default {
     setParameter (element, index) {
       if (element.labelKey.name === 'grid') { return }
       this.$store.commit('form/setActive', { type: 'click', element: element, index: index })
+    },
+    renderElement () {
+      console.log(render(this.list))
     }
   },
   watch: {

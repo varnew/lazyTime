@@ -6,8 +6,8 @@
     div.container
       div.parameter
         div.parameter-item(v-for="(item, key, index) in list[activeIndex]" v-if="list[activeIndex] && list[activeIndex][key].type")
-          el-tooltip(effect="dark" :content="list[activeIndex]['desc']" placement="top")
-            div.parameter-item-left {{key}}
+          <!--el-tooltip(effect="dark" :content="list[activeIndex]['desc']" placement="top")-->
+          div.parameter-item-left {{key}}
           div.parameter-item-right
             el-input(v-model="list[activeIndex][key].name" type="text" size="mini" v-if="list[activeIndex][key].type === 'string'")
             el-select(v-model="list[activeIndex][key]['optionSeleted']" type="text" size="mini" v-if="list[activeIndex][key].type === 'option'")

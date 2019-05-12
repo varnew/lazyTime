@@ -123,7 +123,8 @@ const labelData = [
     value: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     disabled: {
       name: '',
@@ -133,7 +134,8 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     border: {
       name: '',
@@ -142,7 +144,8 @@ const labelData = [
         { label: '有边框', value: true },
         { label: '无边框', value: false }
       ],
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     size: {
       name: 'mini',
@@ -152,8 +155,9 @@ const labelData = [
         { label: 'small', name: 'small' },
         { label: 'medium', name: 'medium' }
       ],
-      optionSeleted: '',
-      isEdit: true
+      optionSeleted: 'mini',
+      isEdit: true,
+      isOption: true
     }
   },
   {
@@ -180,17 +184,20 @@ const labelData = [
     value: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'true-label': {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'false-label': {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     disabled: {
       name: '',
@@ -200,7 +207,8 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     border: '', // true or false
     size: {
@@ -211,8 +219,9 @@ const labelData = [
         { label: 'small', name: 'small' },
         { label: 'medium', name: 'medium' }
       ],
-      optionSeleted: '',
-      isEdit: true
+      optionSeleted: 'mini',
+      isEdit: true,
+      isOption: true
     },
     checked: {
       name: '',
@@ -220,7 +229,8 @@ const labelData = [
       options: [
         { label: '选中', value: true },
         { label: '不选中', value: false }
-      ]
+      ],
+      isOption: true
     }
   },
   {
@@ -247,22 +257,26 @@ const labelData = [
     min: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     max: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     step: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     precision: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     size: {
       name: 'mini',
@@ -271,8 +285,9 @@ const labelData = [
         { label: 'large', name: 'large' },
         { label: 'small', name: 'small' }
       ],
-      optionSeleted: '',
-      isEdit: true
+      optionSeleted: 'small',
+      isEdit: true,
+      isOption: true
     },
     disabled: {
       name: '',
@@ -282,7 +297,8 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     controls: {
       name: '',
@@ -292,7 +308,8 @@ const labelData = [
         { label: 'controls:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'controls-position': {
       name: '',
@@ -302,7 +319,8 @@ const labelData = [
         { label: 'right', value: 'right' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     label: {
       name: '',
@@ -312,7 +330,8 @@ const labelData = [
     placeholder: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     }
   },
   {
@@ -329,12 +348,14 @@ const labelData = [
     labelKey: {
       name: 'select',
       type: '',
-      isEdit: false
+      isEdit: false,
+      isOption: true
     },
     value: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     multiple: {
       name: '',
@@ -344,7 +365,8 @@ const labelData = [
         { label: 'multiple:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     disabled: {
       name: '',
@@ -354,7 +376,8 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     size: {
       name: 'mini',
@@ -365,7 +388,8 @@ const labelData = [
         { label: 'medium', name: 'medium' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     clearable: {
       name: '',
@@ -375,7 +399,8 @@ const labelData = [
         { label: 'clearable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'collapse-tags': {
       name: '',
@@ -385,12 +410,14 @@ const labelData = [
         { label: '多选时不将选中值按文字的形式展示', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'multiple-limit': { // 多选时用户最多可以选择的项目数，为 0 则不限制
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     autocomplete: {
       name: '',
@@ -400,12 +427,14 @@ const labelData = [
         { label: 'select input 的 autocomplete 属性', value: 'no' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     placeholder: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     // 辅助数据：
     options: [{ name: '选项一', value: 'one' }, { name: '选项二', value: 'two' }]
@@ -424,12 +453,14 @@ const labelData = [
     labelKey: {
       name: 'switch',
       type: '',
-      isEdit: false
+      isEdit: false,
+      isOption: true
     },
     value: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     disabled: {
       name: '',
@@ -439,22 +470,26 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     width: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'active-text': {
       name: '开启', // switch 打开时的文字描述
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'inactive-text': {
       name: '关闭', // switch 关闭时的文字描述
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'active-value': {
       name: '', // switch 打开时的值
@@ -464,17 +499,20 @@ const labelData = [
     'inactive-value': {
       name: '', // switch 关闭时的值
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'active-color': {
       name: '', // switch 打开时的背景色
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'inactive-color': {
       name: '', // switch 关闭时的背景色,
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     }
   },
   {
@@ -491,22 +529,26 @@ const labelData = [
     labelKey: {
       name: 'slide',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     value: {
       name: 50,
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     min: {
       name: 'slide 滑块',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     max: {
       name: 'slide 滑块',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     disabled: {
       name: '',
@@ -516,12 +558,14 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     step: {
       name: '', // 步长
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'show-input': {
       name: '',
@@ -531,7 +575,8 @@ const labelData = [
         { label: '不显示输入框，仅在非范围选择时有效', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'show-input-controls': {
       name: '',
@@ -541,7 +586,8 @@ const labelData = [
         { label: '在显示输入框的情况下，不显示输入框的控制按钮', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'input-size': {
       name: '',
@@ -553,7 +599,8 @@ const labelData = [
         { label: 'large', name: 'large' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'show-stops': {
       name: '',
@@ -563,7 +610,8 @@ const labelData = [
         { label: '不显示间断点', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'show-tooltip': {
       name: '',
@@ -573,7 +621,8 @@ const labelData = [
         { label: '不显示 tooltip', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     range: {
       name: '',
@@ -583,7 +632,8 @@ const labelData = [
         { label: '不是范围选择', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     vertical: {
       name: '',
@@ -593,12 +643,14 @@ const labelData = [
         { label: '横向模式', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     height: {
       name: '', // Slider 高度，竖向模式时必填
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     }
   },
   {
@@ -615,7 +667,8 @@ const labelData = [
     labelKey: {
       name: 'timePicker',
       type: 'string',
-      isEdit: false
+      isEdit: false,
+      isOption: true
     },
     readonly: {
       name: '',
@@ -625,7 +678,8 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     disabled: {
       name: '',
@@ -635,7 +689,8 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     editable: {
       name: '',
@@ -645,7 +700,8 @@ const labelData = [
         { label: 'editable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     clearable: {
       name: '',
@@ -655,7 +711,8 @@ const labelData = [
         { label: 'clearable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     size: {
       name: 'mini',
@@ -666,27 +723,32 @@ const labelData = [
         { label: 'medium', name: 'medium' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     }, // medium / small / mini
     placeholder: {
       name: '选择时间',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'start-placeholder': {
       name: '开始时间', // 范围选择时开始日期的占位内容
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'end-placeholder': {
       name: '结束时间', // 范围选择时开始日期的占位内容
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     value: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     align: {
       name: '',
@@ -697,12 +759,14 @@ const labelData = [
         { label: 'right', value: 'right' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'range-separator': {
       name: '-', // 选择范围时的分隔符
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'value-format': {
       name: '',
@@ -712,7 +776,8 @@ const labelData = [
         { label: 'yyyy-MM-dd HH:mm:ss', value: 'yyyy-MM-dd HH:mm:ss' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'default-value': {
       name: '',
@@ -722,7 +787,8 @@ const labelData = [
         { label: 'yyyy-MM-dd HH:mm:ss', value: 'yyyy-MM-dd HH:mm:ss' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     // 辅助字段
     'picker-options': {
@@ -755,7 +821,8 @@ const labelData = [
         { label: 'readonly:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     disabled: {
       name: '',
@@ -765,7 +832,8 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     editable: {
       name: '',
@@ -775,7 +843,8 @@ const labelData = [
         { label: 'editable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     clearable: { // 是否显示清除按钮 true or false
       name: '',
@@ -785,7 +854,8 @@ const labelData = [
         { label: 'clearable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     size: {
       name: 'mini',
@@ -796,27 +866,32 @@ const labelData = [
         { label: 'medium', name: 'medium' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     placeholder: {
       name: '选择时间',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'start-placeholder': {
       name: '开始时间', // 范围选择时开始日期的占位内容
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'end-placeholder': {
       name: '结束时间', // 范围选择时开始日期的占位内容
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     value: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     align: {
       name: '',
@@ -827,12 +902,14 @@ const labelData = [
         { label: 'right', value: 'right' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'range-separator': {
       name: '-', // 选择范围时的分隔符
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'value-format': {
       name: '',
@@ -842,7 +919,8 @@ const labelData = [
         { label: 'yyyy-MM-dd HH:mm:ss', value: 'yyyy-MM-dd HH:mm:ss' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'default-value': {
       name: '',
@@ -852,7 +930,8 @@ const labelData = [
         { label: 'yyyy-MM-dd HH:mm:ss', value: 'yyyy-MM-dd HH:mm:ss' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     }
   },
   {
@@ -869,7 +948,8 @@ const labelData = [
     labelKey: {
       name: 'dateTimePicker',
       type: 'string',
-      isEdit: false
+      isEdit: false,
+      isOption: true
     },
     readonly: {
       name: '',
@@ -879,7 +959,8 @@ const labelData = [
         { label: 'readonly:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     disabled: {
       name: '',
@@ -889,7 +970,8 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     editable: {
       name: '',
@@ -899,7 +981,8 @@ const labelData = [
         { label: 'editable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     clearable: { // 是否显示清除按钮 true or false
       name: '',
@@ -909,7 +992,8 @@ const labelData = [
         { label: 'clearable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     size: {
       name: 'mini',
@@ -920,27 +1004,32 @@ const labelData = [
         { label: 'medium', name: 'medium' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     placeholder: {
       name: '选择时间',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'start-placeholder': {
       name: '开始时间', // 范围选择时开始日期的占位内容
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'end-placeholder': {
       name: '结束时间', // 范围选择时开始日期的占位内容
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     value: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     type: {
       name: 'datetime',
@@ -955,7 +1044,8 @@ const labelData = [
         { label: 'daterange', value: 'daterange' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     align: {
       name: '',
@@ -966,12 +1056,14 @@ const labelData = [
         { label: 'right', value: 'right' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'range-separator': {
       name: '-', // 选择范围时的分隔符
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'value-format': {
       name: '',
@@ -981,7 +1073,8 @@ const labelData = [
         { label: 'yyyy-MM-dd HH:mm:ss', value: 'yyyy-MM-dd HH:mm:ss' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'default-value': {
       name: '',
@@ -991,7 +1084,8 @@ const labelData = [
         { label: 'yyyy-MM-dd HH:mm:ss', value: 'yyyy-MM-dd HH:mm:ss' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'format': {
       name: '',
@@ -1001,7 +1095,8 @@ const labelData = [
         { label: 'yyyy-MM-dd HH:mm:ss', value: 'yyyy-MM-dd HH:mm:ss' }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     }
   },
   {
@@ -1023,17 +1118,20 @@ const labelData = [
     value: {
       name: [],
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     action: {
       name: 'https://jsonplaceholder.typicode.com/posts/', // 必选参数，上传的地址
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     headers: {
       name: '', // 设置上传的请求头部
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     multiple: { // 是否支持多选文件
       name: '',
@@ -1043,17 +1141,20 @@ const labelData = [
         { label: 'multiple:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     data: {
       name: '', // 上传时附带的额外参数
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     name: {
       name: '', // 上传的文件字段名
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'with-credentials': {
       name: '',
@@ -1063,7 +1164,8 @@ const labelData = [
         { label: '不支持发送 cookie 凭证信息', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'show-file-list': {
       name: '',
@@ -1073,7 +1175,8 @@ const labelData = [
         { label: '不显示已上传文件列表', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     drag: {
       name: '',
@@ -1083,12 +1186,14 @@ const labelData = [
         { label: '不启用拖拽上传', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     accept: {
       name: '', // 接受上传的文件类型（thumbnail-mode 模式下此参数无效）
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     disabled: {
       name: '',
@@ -1098,12 +1203,14 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     limit: {
       name: 10, // 最大允许上传个数
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     }
   },
   {
@@ -1120,17 +1227,20 @@ const labelData = [
     labelKey: {
       name: 'rate',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     value: {
       name: 4.5,
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     max: {
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     disabled: {
       name: '',
@@ -1140,7 +1250,8 @@ const labelData = [
         { label: 'disable:false', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'allow-half': {
       name: '',
@@ -1150,27 +1261,32 @@ const labelData = [
         { label: '不允许半选', value: false }
       ],
       optionSeleted: '',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     colors: { // icon 的颜色数组，共有 3 个元素，为 3 个分段所对应的颜色['#F7BA2A', '#F7BA2A', '#F7BA2A']
       name: '',
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'void-color': {
       name: '', // 未选中 icon 的颜色#C6D1DE
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'disabled-void-color': {
       name: '', // 只读时未选中 icon 的颜色#EFF2F7
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     },
     'text-color': {
       name: '', // '#ff9900'
       type: 'string',
-      isEdit: true
+      isEdit: true,
+      isOption: true
     }
   }
 ]

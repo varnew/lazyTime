@@ -7,6 +7,11 @@ import VCharts from 'v-charts'
 import 'normalize.css'
 import codeCarbon from 'code-carbon'
 import 'element-ui/lib/theme-chalk/index.css'
+import * as fundebug from '../static/fundebug.min'
+import fundebugVue from 'fundebug-vue'
+
+fundebug.apikey = '9cfeba66bc3a4ba66ac1aa0bf29843c67371e4516df27bda37f18eeba8dc269f'
+fundebugVue(fundebug, Vue)
 
 Vue.use(ElementUI)
 Vue.use(VCharts)
