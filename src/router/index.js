@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Default from '@/layouts/Default'
-import Test from '@/pages/Test'
-import Error from '@/pages/error/Error'
-import ErrorList from '@/pages/error/ErrorList'
-import ErrorDetail from '@/pages/error/ErrorDetail'
+const Default = () => import('@/layouts/Default')
+const Test = () => import('@/pages/Test')
+const Error = () => import('@/pages/error/Error')
+const ErrorList = () => import('@/pages/error/ErrorList')
+const ErrorDetail = () => import('@/pages/error/ErrorDetail')
 
 Vue.use(Router)
 
