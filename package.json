@@ -1,7 +1,7 @@
 {
-  "name": "mianyang",
+  "name": "lazyTime",
   "version": "1.0.0",
-  "description": "Mianyang Personal Front-end Operating System",
+  "description": "前端错误监控",
   "author": "varnew <varnew@163.com>",
   "private": true,
   "scripts": {
@@ -17,7 +17,6 @@
     "element-ui": "^2.4.11",
     "fundebug-javascript": "^1.7.3",
     "fundebug-vue": "0.0.1",
-    "jquery": "^3.3.1",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "moment": "^2.24.0",
