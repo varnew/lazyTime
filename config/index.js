@@ -12,8 +12,12 @@ module.exports = {
     proxyTable: {
       '/fundebug': {
         // target: 'http://193.112.72.172:7000',  //正式
-        target: 'http://127.0.0.1:7002',  //开发
+        target: 'http://127.0.0.1:7001',  //开发
         changeOrigin: true,  //是否跨域
+      },
+      '/img/upload': {
+        target: 'http://127.0.0.1:7001',
+        changeOrigin: true
       },
       cssSourceMap: false
     },

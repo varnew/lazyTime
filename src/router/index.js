@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Default from '@/layouts/Default'
 import Test from '@/pages/Test'
-import Main from '@/pages/main/Main'
 import Error from '@/pages/error/Error'
 import ErrorList from '@/pages/error/ErrorList'
 import ErrorDetail from '@/pages/error/ErrorDetail'
@@ -14,13 +13,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'default',
       component: Default,
       children: [
         {
           path: '',
-          name: '',
-          component: Main
+          component: Error
         },
         {
           path: 'test',
@@ -28,18 +25,11 @@ export default new Router({
           component: Test
         },
         {
-          path: 'main',
-          name: 'main',
-          component: Main
-        },
-        {
           path: 'error',
-          name: 'error',
           component: Error,
           children: [
             {
-              path: 'list',
-              name: 'errorList',
+              path: '',
               component: ErrorList
             },
             {
