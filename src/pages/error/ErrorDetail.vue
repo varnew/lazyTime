@@ -37,7 +37,7 @@ import errorAPI from '@/api/error.js'
 import {parseTime} from '../../utils/utils'
 const baseInfo = () => import('./components/Base_info')
 const sourceInfo = () => import('./components/source_info')
-const stackInfo = import('./components/stack_info')
+const stackInfo = () => import('./components/stack_info')
 const errorInfo = () => import('./components/error_info')
 const deviceInfo = () => import('./components/device_info')
 const positionInfo = () => import('./components/position_info')
