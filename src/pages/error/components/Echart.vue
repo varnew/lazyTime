@@ -4,6 +4,7 @@
 </template>
 
 <script>
+import 'echarts/lib/component/dataZoom'
 import errorAPI from '@/api/error.js'
 export default {
   components: {
