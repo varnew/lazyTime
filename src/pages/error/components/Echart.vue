@@ -4,14 +4,9 @@
 </template>
 
 <script>
-import 'echarts/lib/component/dataZoom'
 import errorAPI from '@/api/error.js'
-import VeLine from 'v-charts/lib/line.common.min'
-const VeHistogram = () => import('v-charts/lib/histogram.common.min')
 export default {
   components: {
-    VeHistogram,
-    VeLine
   },
   data () {
     return {

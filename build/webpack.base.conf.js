@@ -34,7 +34,8 @@ module.exports = {
   },
   externals: {
     vue: 'Vue',
-    'element-ui': 'ELEMENT'
+    'element-ui': 'ELEMENT',
+    'v-charts': 'VCharts'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
