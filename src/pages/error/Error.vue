@@ -8,7 +8,7 @@
 
 <script>
 import search from './components/Search'
-import echart from './components/Echart'
+const echart = () => import('./components/Echart')
 export default {
   components: {
     search,

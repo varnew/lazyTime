@@ -34,17 +34,17 @@
 </template>
 <script>
 import errorAPI from '@/api/error.js'
-import baseInfo from './components/Base_info'
-import sourceInfo from './components/source_info'
-import stackInfo from './components/stack_info'
-import errorInfo from './components/error_info'
-import deviceInfo from './components/device_info'
-import positionInfo from './components/position_info'
-import orderInfo from './components/order_info'
-import userAction from './components/user_action'
-import performance from './components/performance'
-import metadata from './components/metadata'
 import {parseTime} from '../../utils/utils'
+const baseInfo = () => import('./components/Base_info')
+const sourceInfo = () => import('./components/source_info')
+const stackInfo = import('./components/stack_info')
+const errorInfo = () => import('./components/error_info')
+const deviceInfo = () => import('./components/device_info')
+const positionInfo = () => import('./components/position_info')
+const orderInfo = () => import('./components/order_info')
+const userAction = () => import('./components/user_action')
+const performance = () => import('./components/performance')
+const metadata = () => import('./components/metadata')
 const detect = require('@/utils/detect')
 export default {
   components: {
