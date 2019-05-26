@@ -33,7 +33,6 @@
         metadata(:errorDetail="errorDetail")
 </template>
 <script>
-import moment from 'moment'
 import errorAPI from '@/api/error.js'
 import baseInfo from './components/Base_info'
 import sourceInfo from './components/source_info'
@@ -45,6 +44,7 @@ import orderInfo from './components/order_info'
 import userAction from './components/user_action'
 import performance from './components/performance'
 import metadata from './components/metadata'
+import {parseTime} from '../../utils/utils'
 const detect = require('@/utils/detect')
 export default {
   components: {
@@ -125,15 +125,15 @@ export default {
         })
     },
     detect (userAgent) {
-      // this.userAgent = detect.parse(userAgent)
-      this.userAgent = detect.parse('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36')
-      console.log(this.userAgent)
+      this.userAgent = detect.parse(userAgent)
+      // this.userAgent = detect.parse('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36')
+      // console.log(this.userAgent)
     },
     showChart () {
       this.chartStatus = !this.chartStatus
     },
     formatTime (time) {
-      return time && moment(new Date(parseFloat(time))).format('YYYY-MM-DD HH:mm:ss')
+      return time && parseTime(time, '{y}-{m}-{d} {h}:{i}:{s}')
     }
   }
 }

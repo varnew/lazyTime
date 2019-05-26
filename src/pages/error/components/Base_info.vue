@@ -15,7 +15,7 @@
       el-col(:span="18") {{errorDetail.url}}
 </template>
 <script>
-import moment from 'moment'
+import { parseTime } from '../../../utils/utils'
 export default {
   props: {
     errorDetail: {
@@ -30,7 +30,7 @@ export default {
   mounted () {},
   methods: {
     formatTime (time) {
-      return time && moment(new Date(parseFloat(time))).format('YYYY-MM-DD HH:mm:ss')
+      return time && parseTime(time, '{y}-{m}-{d} {h}:{i}:{s}')
     }
   }
 }

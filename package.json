@@ -19,7 +19,6 @@
     "fundebug-vue": "0.0.1",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
-    "moment": "^2.24.0",
     "normalize.css": "^8.0.1",
     "style-loader": "^0.23.1",
     "v-charts": "^1.19.0",

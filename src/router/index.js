@@ -17,7 +17,7 @@ export default new Router({
       children: [
         {
           path: '',
-          component: Error
+          redirect: '/error'
         },
         {
           path: 'test',
