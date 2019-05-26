@@ -1,6 +1,6 @@
 import axios from 'axios'
-import { Message } from 'element-ui'
 import { removeEmptyValue } from '../utils/utils.js'
+const Message = window.ELEMENT.Message
 
 axios.interceptors.request.use(config => {
   if (config.method === 'get') {
