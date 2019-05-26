@@ -1,6 +1,5 @@
 <template lang="pug">
-  div.box(:class="{ 'hide': !chartStatus, 'show': chartStatus }")
-    div.btn(@click="showChart") {{chartStatus ? '收起':'展开'}}
+  div.box.chartStatus
     article.wrap
       div.header
         el-radio-group(v-model="tabObj.active" size="small")
@@ -96,7 +95,6 @@ export default {
           if (res.data.code === 200) {
             this.errorDetail = res.data.data
             this.detect(this.errorDetail.userAgent)
-            window.fundebug.notify('Test', 'Hello, Fundebug!')
           } else {
             this.$message.error(res.data.message)
           }
@@ -141,6 +139,7 @@ export default {
 <style lang="less" scoped>
   .box{
     height: 100%;
+    width: 100%;
     background: #fff;
   }
   .hide{
@@ -150,14 +149,6 @@ export default {
   .show{
     transition: transform 0.3s ease-in;
     transform: translateY(0px);
-  }
-  .btn{
-    height: 30px;
-    line-height: 31px;
-    text-align: center;
-    background: #f2f2f2;
-    color: gray;
-    cursor: pointer;
   }
   .wrap{
     width: 100%;

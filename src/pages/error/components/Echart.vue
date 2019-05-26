@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div.histogram
     ve-histogram(:data="chartData" :extend="extend" :settings="chartSettings" :data-zoom="dataZoom")
 </template>
 
@@ -68,5 +68,8 @@ export default {
   .wrap{
     width: 100%;
     height: 100%;
+    .histogram {
+      height: 420px;
+    }
   }
 </style>

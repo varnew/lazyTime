@@ -31,13 +31,13 @@ export default new Router({
             {
               path: '',
               component: ErrorList
-            },
-            {
-              path: 'detail',
-              name: 'errorDetail',
-              component: ErrorDetail
             }
           ]
+        },
+        {
+          path: 'detail',
+          name: 'errorDetail',
+          component: ErrorDetail
         }
       ]
     }
