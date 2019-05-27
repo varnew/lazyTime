@@ -34,10 +34,10 @@ export default {
 <style lang="less" scoped>
   @import "../../../assets/css/base.less";
   .border-bottom{
-    box-shadow: 0px 0px 6px @color4;
-    color: @color4;
+    box-shadow: 0px 0px 6px @color6;
+    color: @color6;
   }
   .title{
-    color: @color4;
+    color: @color6;
   }
 </style>

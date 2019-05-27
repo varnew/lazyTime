@@ -35,7 +35,7 @@ export default new Router({
           ]
         },
         {
-          path: 'detail',
+          path: 'detail/:id',
           name: 'errorDetail',
           component: ErrorDetail
         }

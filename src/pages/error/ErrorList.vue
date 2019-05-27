@@ -45,9 +45,6 @@ export default {
         .then((res) => {
           if (res.data.code === 200) {
             this.tableList = res.data.data
-            console.log('----------')
-            console.log(this.tableList)
-            console.log('----------')
             this.pagination.totalSize = res.data.totalSize
             this.tableList.map((item) => {
               item.name = item.stacktrace || item.target.src
@@ -64,7 +61,7 @@ export default {
       this.selectedList = list
     },
     rowClick (row, column, event) {
-      this.$router.push({ name: 'errorDetail', params: {}, query: {id: row.id, typeId: row.typeId} })
+      this.$router.push({ name: 'errorDetail', params: {id: row.id}, query: {typeId: row.typeId} })
     },
     handleSizeChange (size) {
       this.pagination.size = size

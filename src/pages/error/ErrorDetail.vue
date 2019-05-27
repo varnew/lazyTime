@@ -4,13 +4,13 @@
       div.header
         div.menu-box
           div.menu-item.mr10.pt4.pb4(v-for="(item) in tabObj.data" :key="item.value" @click="tabObj.active = item.value" :class="{ 'active': tabObj.active === item.value }") {{item.label}}
-      div.list
+      div.list(v-loading="loading.list")
         div.list-item(:class="{ 'active': item.id === activeErrorId }" v-for="(item, index) in errorList" :key="index" @click="init(item.id)")
           div.name {{item.name}}
           div.time {{formatTime(item.time)}}
           div.type {{item.type}}
       // 基本信息
-      div.base-info(v-if="tabObj.active === 'baseInfo'" v-loading="loading.list")
+      div.base-info(v-if="tabObj.active === 'baseInfo'" v-loading="loading.detail")
         section.error-info(v-if="errorDetail")
           base-info(:errorDetail="errorDetail")
           source-info(:errorDetail="errorDetail")
@@ -21,14 +21,14 @@
           position-info(:errorDetail="errorDetail")
           order-info(:errorDetail="errorDetail")
       // 用户行为
-      div.user-action(v-if="tabObj.active === 'userAction' && errorDetail" v-loading="loading.list")
+      div.user-action(v-if="tabObj.active === 'userAction' && errorDetail" v-loading="loading.detail")
         section.action-item(v-for="(item) in errorDetail.breadcrumbs")
           user-action(:item="item")
       // 页面性能
-      div.performance-info(v-if="tabObj.active === 'performance' && errorDetail" v-loading="loading.list")
+      div.performance-info(v-if="tabObj.active === 'performance' && errorDetail" v-loading="loading.detail")
         performance(:errorDetail="errorDetail")
       // 携带参数
-      div.performance-info(v-if="tabObj.active === 'metaData' && errorDetail" v-loading="loading.list")
+      div.performance-info(v-if="tabObj.active === 'metaData' && errorDetail" v-loading="loading.detail")
         metadata(:errorDetail="errorDetail")
 </template>
 <script>
@@ -60,11 +60,15 @@ export default {
   },
   data: () => {
     return {
+      clientObj: {
+        height: '100%'
+      },
       chartStatus: false,
       errorDetail: null,
       userAgent: null,
       loading: {
-        list: false
+        list: false,
+        detail: false
       },
       tabObj: {
         active: 'baseInfo',
@@ -80,7 +84,7 @@ export default {
     }
   },
   mounted () {
-    this.init(this.$route.query.id)
+    this.init(this.$route.params.id)
     this.fetchList(this.$route.query.typeId)
   },
   methods: {
@@ -89,7 +93,7 @@ export default {
         id: id
       }
       this.activeErrorId = id
-      this.loading.list = true
+      this.loading.detail = true
       errorAPI.getErrorById(params)
         .then((res) => {
           if (res.data.code === 200) {
@@ -103,13 +107,14 @@ export default {
           console.log(res)
         })
         .finally(() => {
-          this.loading.list = false
+          this.loading.detail = false
         })
     },
     fetchList (typeId) { // 根据tupeId获取列表
       const params = {
         typeId: typeId
       }
+      this.loading.list = true
       errorAPI.getErrorByTypeId(params)
         .then((res) => {
           if (res.data.code === 200) {
@@ -121,11 +126,12 @@ export default {
         .catch((res) => {
           console.log(res)
         })
+        .finally(() => {
+          this.loading.list = false
+        })
     },
     detect (userAgent) {
       this.userAgent = detect.parse(userAgent)
-      // this.userAgent = detect.parse('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36')
-      // console.log(this.userAgent)
     },
     showChart () {
       this.chartStatus = !this.chartStatus
@@ -154,11 +160,12 @@ export default {
     .header{
       width: 100%;
       height: 50px;
-      position: absolute;
+      position: fixed;
       top: 0px;
       left: 0px;
       background: @bgSubColor;
       color: @writeColor;
+      z-index: 2;
       .menu-box{
         position: relative;
         left: 300px;
@@ -173,25 +180,26 @@ export default {
           flex: 1;
           text-align: center;
           &.active{
-            border: 1px solid @color7;
-            color: @color7;
+            border: 1px solid @color6;
+            color: @color6;
           }
           &:hover{
             background: @bgMainColor;
-            color: @color7;
+            color: @color6;
           }
         }
       }
     }
     .list{
       width: 300px;
-      min-height:100%;
+      max-height:100%;
       background: @bgSubColor;
       .list-item{
         font-size: 12px;
         height: 12px;
         line-height: 12px;
         padding: 10px 8px;
+        cursor: pointer;
         &+.list-item{
           border-top: 1px solid @color6;
         }
@@ -208,6 +216,7 @@ export default {
           color: @color6;
         }
         &:hover{
+          background: @bgMainColor;
           font-weight: bold;
         }
       }
@@ -237,25 +246,21 @@ export default {
     }
     .user-action{
       flex: 1;
-      height: 100%;
+      min-height: 100%;
       overflow-y: auto;
-      border-left: 1px solid #eee;
+      background: @bgMainColor;
       &::-webkit-scrollbar{
         display: none;
       }
       .action-item {
         padding: 6px;
-        & + .action-item {
-          border-top: 2px dashed #eee;
-        }
       }
     }
     .performance-info{
       flex: 1;
       width: 100%;
-      height: 100%;
-      background: #fcf6db;
-      border-left: 1px solid #eee;
+      min-height: 100%;
+      background: @bgMainColor;
     }
   }
   .hide{

@@ -30,4 +30,8 @@ body{
   background-color: #465267
 }
 
+/*element-ui-reset*/
 
+.el-loading-mask{
+  background: #0e141f;
+}

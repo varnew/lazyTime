@@ -1,8 +1,8 @@
 <template lang="pug">
-  pre.pre
-    code.code {{errorDetail.metadata}}
+  code-carbon(:code="errorDetail.metadata")
 </template>
 <script>
+import codeCarbon from 'code-carbon'
 export default {
   props: {
     errorDetail: {
@@ -10,6 +10,7 @@ export default {
       default: () => {}
     }
   },
+  components: {codeCarbon},
   data: () => {
     return {
     }
@@ -19,18 +20,9 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-  .pre{
-    font-size: 13px;
-    line-height: 24px;
-    overflow: auto;
-    height: 100%;
-    min-height: 500px;
-    resize: vertical;
-    cursor: pointer;
-    .code{
-      display: block;
-      overflow-x: auto;
-      padding: .5em;
-    }
+  pre{
+    display: block;
+    margin: 0px;
+    padding: 0px 15px;
   }
 </style>
