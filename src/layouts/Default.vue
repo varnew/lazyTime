@@ -1,7 +1,5 @@
 <template lang="pug">
   el-container.default
-    //el-header
-      //Aside
     el-container.main
       router-view
 </template>

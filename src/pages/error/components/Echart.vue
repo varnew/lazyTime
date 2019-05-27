@@ -5,6 +5,7 @@
 
 <script>
 import errorAPI from '@/api/error.js'
+import {parseTime} from '../../../utils/utils'
 export default {
   components: {
   },
@@ -47,7 +48,7 @@ export default {
         .then((res) => {
           if (res.data.code === 200) {
             this.chartData.rows.push({
-              '日期': '2018-10-10',
+              '日期': parseTime(new Date(), '{y}-{m}-{d}'),
               '资源错误': res.data.data.source,
               'js错误': res.data.data.js,
               'http错误': res.data.data.http,

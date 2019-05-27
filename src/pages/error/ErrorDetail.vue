@@ -2,8 +2,8 @@
   div.box.chartStatus
     article.wrap
       div.header
-        el-radio-group(v-model="tabObj.active" size="small")
-          el-radio-button(v-for="(item) in tabObj.data" :key="item.value" :label="item.value") {{item.label}}
+        div.menu-box
+          div.menu-item.mr10.pt4.pb4(v-for="(item) in tabObj.data" :key="item.value" @click="tabObj.active = item.value" :class="{ 'active': tabObj.active === item.value }") {{item.label}}
       div.list
         div.list-item(:class="{ 'active': item.id === activeErrorId }" v-for="(item, index) in errorList" :key="index" @click="init(item.id)")
           div.name {{item.name}}
@@ -137,24 +137,15 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+  @import "../../assets/css/base.less";
   .box{
     height: 100%;
     width: 100%;
-    background: #fff;
-  }
-  .hide{
-    transition: transform 0.3s ease-in;
-    transform: translateY(-342px);
-  }
-  .show{
-    transition: transform 0.3s ease-in;
-    transform: translateY(0px);
   }
   .wrap{
     width: 100%;
-    height: 100%;
-    min-height: 700px;
-    padding-top: 36px;
+    min-height: 100%;
+    padding-top: 50px;
     margin: 0px;
     display: flex;
     flex-direction: row;
@@ -162,25 +153,48 @@ export default {
     word-break: break-all;
     .header{
       width: 100%;
-      height: 36px;
+      height: 50px;
       position: absolute;
       top: 0px;
       left: 0px;
-      border-bottom: 1px solid #eee;
-      .el-radio-group{
-        position: absolute;
+      background: @bgSubColor;
+      color: @writeColor;
+      .menu-box{
+        position: relative;
         left: 300px;
-        top: 5px;
+        height: 100%;
+        max-width: 360px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        .menu-item{
+          flex: 1;
+          text-align: center;
+          &.active{
+            border: 1px solid @color7;
+            color: @color7;
+          }
+          &:hover{
+            background: @bgMainColor;
+            color: @color7;
+          }
+        }
       }
     }
     .list{
       width: 300px;
-      height:100%;
+      min-height:100%;
+      background: @bgSubColor;
       .list-item{
         font-size: 12px;
         height: 12px;
         line-height: 12px;
         padding: 10px 8px;
+        &+.list-item{
+          border-top: 1px solid @color6;
+        }
         .name{
           float: left;
         }
@@ -191,21 +205,21 @@ export default {
           text-align: center;
         }
         &.active{
-          background: #f2f2f2;
+          color: @color6;
         }
         &:hover{
-          background: #f2f2f2;
-          cursor: pointer;
+          font-weight: bold;
         }
       }
     }
     .base-info {
-      height: 100%;
+      min-height: 100%;
       flex: 1;
       display: flex;
       flex-direction: row;
       word-wrap: break-word;
-      border-left: 1px solid #eee;
+      padding-bottom: 20px;
+      background: @bgMainColor;
       overflow-y: auto;
       &::-webkit-scrollbar{
         display: none;
@@ -243,5 +257,13 @@ export default {
       background: #fcf6db;
       border-left: 1px solid #eee;
     }
+  }
+  .hide{
+    transition: transform 0.3s ease-in;
+    transform: translateY(-342px);
+  }
+  .show{
+    transition: transform 0.3s ease-in;
+    transform: translateY(0px);
   }
 </style>

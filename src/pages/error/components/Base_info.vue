@@ -1,16 +1,16 @@
 <template lang="pug">
   div
-    h4 概要信息
-    el-row(style="margin: 10px 0px;padding:10px 0px;border-bottom:1px dashed #eee;")
+    h4.title 概要信息
+    el-row.border-bottom.pt16.pb16.pl10.pr10
       el-col(:span="6") 时间
       el-col(:span="18") {{formatTime(errorDetail.time)}}
-    el-row(style="margin: 10px 0px;padding:10px 0px;border-bottom:1px dashed #eee;")
+    el-row.border-bottom.pt16.pb16.pl10.pr10
       el-col(:span="6") 类型
       el-col(:span="18") {{errorDetail.type}}
-    el-row(style="margin: 10px 0px;padding:10px 0px;border-bottom:1px dashed #eee;")
+    el-row.border-bottom.pt16.pb16.pl10.pr10
       el-col(:span="6") title
       el-col(:span="18") {{errorDetail.title}}
-    el-row(style="margin: 10px 0px;padding:10px 0px;border-bottom:1px dashed #eee;")
+    el-row.border-bottom.pt16.pb16.pl10.pr10
       el-col(:span="6") URL
       el-col(:span="18") {{errorDetail.url}}
 </template>
@@ -36,4 +36,12 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+  @import "../../../assets/css/base.less";
+  .border-bottom{
+    box-shadow: 0px 0px 6px @color1;
+    color: @color1;
+  }
+  .title{
+    color: @color1;
+  }
 </style>

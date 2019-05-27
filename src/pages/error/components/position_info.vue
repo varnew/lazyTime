@@ -1,13 +1,13 @@
 <template lang="pug">
   div
-    h4 位置信息
-    el-row(style="margin: 10px 0px;padding:10px 0px;border-bottom:1px dashed #eee;")
+    h4.title 位置信息
+    el-row.border-bottom.pt16.pb16.pl10.pr10
       el-col(:span="6") IP
       el-col(:span="18") {{errorDetail.ip}}
-    el-row(style="margin: 10px 0px;padding:10px 0px;border-bottom:1px dashed #eee;")
+    el-row.border-bottom.pt16.pb16.pl10.pr10
       el-col(:span="6") 地点
       el-col(:span="18") xxx
-    el-row(style="margin: 10px 0px;padding:10px 0px;border-bottom:1px dashed #eee;")
+    el-row.border-bottom.pt16.pb16.pl10.pr10
       el-col(:span="6") 运营商
       el-col(:span="18") xxx
 </template>
@@ -28,4 +28,12 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+  @import "../../../assets/css/base.less";
+  .border-bottom{
+    box-shadow: 0px 0px 6px @color5;
+    color: @color5;
+  }
+  .title{
+    color: @color5;
+  }
 </style>

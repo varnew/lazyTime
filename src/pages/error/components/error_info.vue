@@ -1,15 +1,16 @@
 <template lang="pug">
   div(v-if="errorDetail.stacktrace")
-    h4 错误信息
-    el-row(style="margin: 10px 0px;padding:10px 0px;border-bottom:1px dashed #eee;")
+    h4.title 错误信息
+    el-row.border-bottom.pt16.pb16.pl10.pr10
       el-col(:span="6") 名称
       el-col(:span="18") {{errorDetail.name}}
-    el-row(style="margin: 10px 0px;padding:10px 0px;border-bottom:1px dashed #eee;")
+    el-row.border-bottom.pt16.pb16.pl10.pr10
       el-col(:span="6") 信息
       el-col(:span="18") {{errorDetail.message}}
-    el-row(style="margin: 10px 0px;padding:10px 0px;border-bottom:1px dashed #eee;")
-      el-col(:span="6") 文件-行号-列号
-      el-col(:span="18") {{errorDetail.stacktrace}}
+    el-row.border-bottom.pt16.pb16.pl10.pr10
+      el-col(:span="24") 文件-行号-列号：
+    el-row.border-bottom.pt16.pb16.pl10.pr10
+      el-col(:span="24") {{errorDetail.stacktrace}}
 </template>
 <script>
 export default {
@@ -28,4 +29,12 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+  @import "../../../assets/css/base.less";
+  .border-bottom{
+    box-shadow: 0px 0px 6px @color6;
+    color: @color6;
+  }
+  .title{
+    color: @color6;
+  }
 </style>

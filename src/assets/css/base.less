@@ -1,33 +1,81 @@
-html{
-  height: 100%;
-  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
-  font-size: 14px;
-  color: #1f2f3d;
-  -webkit-font-smoothing: antialiased;
-  body{
-    margin: 0px;
-    height: 100%;
+// 颜色
+@writeColor: #fff;
+@color1: #7bd6f0;
+@color2: #a7aab3;
+@color3: #037c98;
+@color4: #a14f27;
+@color5: #3a8ee6;
+@color6: #eecd79;
+@color7: #eecd79;
+
+// 背景颜色
+@bgMainColor: #0e141f;
+@bgSubColor: #192335;
+
+// 边框颜色
+@bdMainColor: #f6fbfd;
+
+// 函数
+.mt(@n) when (@n > 0){
+  .mt(@n - 2);
+  .mt@{n}{
+    margin-top: 1px*@n;
   }
-  /*
-  * @desc:滚动条
-  **/
-  //::-webkit-scrollbar
-  //{
-  //  width: 5px;  /*滚动条宽度*/
-  //  height: 5px;  /*滚动条高度*/
-  //}
-  ///*定义滚动条轨道 内阴影+圆角*/
-  //::-webkit-scrollbar-track
-  //{
-  //  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-  //  border-radius: 0px;  /*滚动条的背景区域的圆角*/
-  //  background-color: #c0c4cc;/*滚动条的背景颜色*/
-  //}
-  ///*定义滑块 内阴影+圆角*/
-  //::-webkit-scrollbar-thumb
-  //{
-  //  border-radius: 0px;  /*滚动条的圆角*/
-  //  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-  //  background-color: #808080;  /*滚动条的背景颜色*/
-  //}
 }
+.mt(50);
+
+.mr(@n) when (@n > 0){
+  .mr(@n - 2);
+  .mr@{n}{
+    margin-right: 1px*@n;
+  }
+}
+.mr(50);
+
+.mb(@n) when (@n > 0){
+  .mb(@n - 2);
+  .mb@{n}{
+    margin-bottom: 1px*@n;
+  }
+}
+.mb(50);
+
+.ml(@n) when (@n > 0){
+  .ml(@n - 2);
+  .ml@{n}{
+    margin-left: 1px*@n;
+  }
+}
+.ml(50);
+
+.pt(@n) when (@n > 0){
+  .pt(@n - 2);
+  .pt@{n}{
+    padding-top: 1px*@n;
+  }
+}
+.pt(50);
+
+.pr(@n) when (@n > 0){
+  .pr(@n - 2);
+  .pr@{n}{
+    padding-right: 1px*@n;
+  }
+}
+.pr(50);
+
+.pb(@n) when (@n > 0){
+  .pb(@n - 2);
+  .pb@{n}{
+    padding-bottom: 1px*@n;
+  }
+}
+.pb(50);
+
+.pl(@n) when (@n > 0){
+  .pl(@n - 2);
+  .pl@{n}{
+    padding-left: 1px*@n;
+  }
+}
+.pl(50);

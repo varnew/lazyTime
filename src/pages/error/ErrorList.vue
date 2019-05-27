@@ -45,6 +45,9 @@ export default {
         .then((res) => {
           if (res.data.code === 200) {
             this.tableList = res.data.data
+            console.log('----------')
+            console.log(this.tableList)
+            console.log('----------')
             this.pagination.totalSize = res.data.totalSize
             this.tableList.map((item) => {
               item.name = item.stacktrace || item.target.src
