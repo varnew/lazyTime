@@ -1,12 +1,12 @@
 <template lang="pug">
   div(v-if="errorDetail.stacktrace")
-    h4.title 堆栈信息
+    h4.title.pt10.pb10.pl10 堆栈信息
     el-row.border-bottom.pt16.pb16.pl10.pr10
-      el-col(:span="24") 提示信息:
+      el-col.error-info-title(:span="24") 提示信息:
     el-row.border-bottom.pt16.pb16.pl10.pr10
       el-col(:span="24") {{errorDetail.message}}
     el-row.border-bottom.pt16.pb16.pl10.pr10
-      el-col(:span="24") 详细信息:
+      el-col.error-info-title(:span="24") 详细信息:
     el-row.border-bottom.pt16.pb16.pl10.pr10
       el-col(:span="24")
         div(v-html="errorDetail.stacktrace")
@@ -34,10 +34,15 @@ export default {
 <style lang="less" scoped>
   @import "../../../assets/css/base.less";
   .border-bottom{
-    box-shadow: 0px 0px 6px @color6;
+    background: @bgSubColor3;
     color: @color6;
+    .error-info-title{
+      color: @color8;
+    }
   }
   .title{
-    color: @color6;
+    margin-bottom: 0px;
+    background: @titleColor;
+    color: @writeColor;
   }
 </style>

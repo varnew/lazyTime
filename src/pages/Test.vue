@@ -1,24 +1,46 @@
 <template lang="pug">
   div.main
-    el-upload(action="/img/upload" :file-list="fileList" :on-success="handleAvatarSuccess")
-      el-button(size="small" type="primary") 点击上传
+    el-button(@click="getBacc") 获取
+    el-table(:data="baccList" style="width: 100%")
+      el-table-column(prop="symbol" label="币种")
+      el-table-column(prop="close" label="最新价")
+      el-table-column(prop="rate" label="涨幅")
+      el-table-column(prop="high" label="最高价")
+      el-table-column(prop="low" label="最低价")
 </template>
 
 <script>
+import baccAPI from '../api/bacc'
+
 export default {
   data () {
     return {
-      fileList: []
+      list: [],
+      baccList: []
     }
   },
   mounted () {
   },
   methods: {
-    handleAvatarSuccess (res, file) {
-      console.log('----------')
-      console.log(res)
-      console.log(file)
-      console.log('----------')
+    getBacc () {
+      const params = {'query': '{' + 'overviewBySymbols(symbols: ["btcusdt","eosusdt","htusdt","ethusdt","dateth","bchusdt","bchbtc","etcusdt","xrpusdt","xemusdt","ltcusdt","neousdt","eoseth","omgeth","ctxceth","itceth","iosteth","gnxeth","btmeth","onteth","qtumeth","datxeth","blzeth","neobtc","blzbtc","storjbtc","btmbtc","ethbtc","xrpbtc","eosbtc","ltcbtc","ontusdt","etcbtc","xembtc","qtumbtc","qtumusdt","waneth","dashusdt","bixeth","hiteth","elaeth","acteth","boxeth","abteth","dtaeth","elfeth","hteth","htbtc","bsvbtc","iicbtc","hptusdt","baccusdt"]) {symbol high low open close rate amount vol estimate {high low open close btc}},qoutes {code text weight}}'}
+      baccAPI.getBacc(params)
+        .then((res) => {
+          if (res) {
+            this.list = res.data.data.overviewBySymbols || []
+            this.list.map((item) => {
+              if (item.symbol === 'baccusdt') {
+                console.log('----------')
+                console.log(item)
+                console.log('----------')
+                this.baccList.push(item)
+              }
+            })
+          }
+        })
+        .catch((res) => {
+          console.log(res)
+        })
     }
   }
 }
@@ -31,8 +53,5 @@ export default {
     padding: 0px;
   }
   .main{
-    width: 100%;
-    display: flex;
-    padding: 20px 10px;
   }
 </style>

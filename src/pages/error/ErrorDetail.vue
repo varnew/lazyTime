@@ -184,7 +184,7 @@ export default {
             color: @color6;
           }
           &:hover{
-            background: @bgMainColor;
+            background: @bgSubColor3;
             color: @color6;
           }
         }
@@ -193,7 +193,7 @@ export default {
     .list{
       width: 300px;
       max-height:100%;
-      background: @bgSubColor;
+      background: @bgSubColor2;
       .list-item{
         font-size: 12px;
         height: 12px;

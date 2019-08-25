@@ -12,7 +12,7 @@ body{
 ::-webkit-scrollbar {
   width: 1rem;
   height: 1rem;
-  background-color: #1b2437;
+  background-color: #0943c5;
 }
 
 ::-webkit-scrollbar:horizontal {
@@ -21,9 +21,10 @@ body{
 
 ::-webkit-scrollbar-thumb {
   border-radius: .5rem;
-  background-color: #374051;
-  box-shadow: inset 0 0 0 1px #49556c;
-  border: .2rem solid #1b2437;
+  background-color: #1461dd;
+  box-shadow: inset 0 0 0 1px #66b1ff;
+  border: .2rem solid #0943c5;
+  border-radius: .5rem;
 }
 
 ::-webkit-scrollbar-thumb:hover{
@@ -33,5 +34,17 @@ body{
 /*element-ui-reset*/
 
 .el-loading-mask{
-  background: #0e141f;
+  background: #012aab;
+}
+.el-table th, .el-table tr{
+  background: #1a78ff;
+  color: #b5c8d9;
+}
+.el-table--striped .el-table__body tr td{
+  background: #2fa2f5;
+  color: #00fffc;
+}
+.el-table--striped .el-table__body tr.el-table__row--striped td{
+  background: #1461dd;
+  color: #b5c8d9;
 }
